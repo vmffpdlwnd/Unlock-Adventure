@@ -5,11 +5,29 @@ namespace UnlockAdventure.Core
 {
     public class SceneManager
     {
+        private static SceneManager instance;
+        public static SceneManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new SceneManager();
+                return instance;
+            }
+        }
+
         private IScene currentScene;
-        public SceneType CurrentSceneType { get; private set; }
+        private SceneType currentSceneType;
+
+        public SceneType CurrentSceneType 
+        {
+            get { return currentSceneType; }
+            private set { currentSceneType = value; }
+        }
 
         public enum SceneType
         {
+            LanguageSelect,
             Intro,
             Town,
             FirstMap,
@@ -17,7 +35,8 @@ namespace UnlockAdventure.Core
 
         public void ChangeScene(SceneType newSceneType)
         {
-            CurrentSceneType = newSceneType;
+            Console.Clear();  
+            currentSceneType = newSceneType;
             currentScene?.Exit();
             currentScene = CreateScene(newSceneType);
             currentScene.Enter();
@@ -27,11 +46,13 @@ namespace UnlockAdventure.Core
         {
             switch (sceneType)
             {
+                case SceneType.LanguageSelect:
+                    return new LanguageSelectScene();
                 case SceneType.Intro:
                     return new IntroScene();
                 default:
                     Environment.Exit(0);
-                    return null;
+                    throw new Exception("Invalid scene type");
             }
         }
 
@@ -46,7 +67,7 @@ namespace UnlockAdventure.Core
         }
     }
 
-    public interface IScene
+    public interface IScene  
     {
         void Enter();
         void Update();

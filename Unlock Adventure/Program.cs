@@ -12,14 +12,14 @@ namespace UnlockAdventure
             Console.CursorVisible = false;
 
             // 각 매니저들 초기화
-            var sceneManager = new Core.SceneManager();
-            var inputSystem = new Core.InputSystem(sceneManager);
-            var gameManager = new Core.GameManager(sceneManager, inputSystem);
+            var sceneManager = new SceneManager();
+            var inputSystem = new InputSystem(sceneManager);
+            var gameManager = new GameManager(sceneManager, inputSystem);
 
             try
             {
                 // 게임 시작
-                sceneManager.ChangeScene(SceneManager.SceneType.Intro);
+                sceneManager.ChangeScene(SceneManager.SceneType.LanguageSelect);
                 gameManager.Run();
             }
             catch (Exception ex)
