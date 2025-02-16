@@ -11,5 +11,8 @@ public class GameOverScene : IScene
         Console.WriteLine("   " + textManager.GetText("gameover.message"));
         Console.WriteLine("================================");
         Console.WriteLine("\n" + textManager.GetText("presskey"));
+
+        // 업적 달성만 호출
+        AchievementManager.Instance.Unlock("realend");
     }
 }
