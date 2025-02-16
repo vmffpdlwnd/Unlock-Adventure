@@ -26,7 +26,12 @@ namespace UnlockAdventure.Core
                 }
                 else if (sceneManager.CurrentSceneType == SceneManager.SceneType.Intro)
                 {
-                    sceneManager.ChangeScene(SceneManager.SceneType.GameOver);  // FirstMap 대신 GameOver로 변경
+                    sceneManager.ChangeScene(SceneManager.SceneType.GameOver);
+                }
+                else if (sceneManager.CurrentSceneType == SceneManager.SceneType.GameOver)
+                {
+                    // 게임 종료
+                    Environment.Exit(0);
                 }
             }
         }
