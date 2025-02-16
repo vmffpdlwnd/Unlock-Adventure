@@ -28,7 +28,7 @@ public class LanguageSystem
 
     public string GetText(string key)
     {
-        return TextData.GetText(key, currentLanguage);
+        return GameData.GetText(key, currentLanguage);
     }
     public void ChangeLanguage(Language language)
     {
