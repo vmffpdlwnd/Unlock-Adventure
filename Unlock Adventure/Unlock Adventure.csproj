@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\GameManager.cs" />
+    <Compile Include="Core\InputSysystem.cs" />
+    <Compile Include="Core\SceneManager.cs" />
+    <Compile Include="Scenes\IntroScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

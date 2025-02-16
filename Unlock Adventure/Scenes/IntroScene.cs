@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unlock_Adventure.Core;
+using UnlockAdventure.Core;
 
-namespace Unlock_Adventure.Scene
+namespace UnlockAdventure.Scenes
 {
     public class IntroScene : IScene
     {

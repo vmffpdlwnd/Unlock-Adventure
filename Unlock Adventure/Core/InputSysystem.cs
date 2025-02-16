@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Unlock_Adventure.Core
+namespace UnlockAdventure.Core
 {
     public class InputSystem
     {
-        SceneManager sceneManager;
+        private readonly SceneManager sceneManager;
+
         public InputSystem(SceneManager sceneManager)
         {
             this.sceneManager = sceneManager;
         }
+
         public void HandleInput()
         {
             if (sceneManager.CurrentSceneType == SceneManager.SceneType.Intro)
