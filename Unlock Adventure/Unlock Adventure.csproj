@@ -48,6 +48,7 @@
     <Compile Include="Core\LanguageSystem.cs" />
     <Compile Include="Core\SceneManager.cs" />
     <Compile Include="Data\TextData.cs" />
+    <Compile Include="Scenes\GameOverScene.cs" />
     <Compile Include="Scenes\IntroScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
