@@ -1,85 +1,53 @@
 ﻿using System;
-using UnlockAdventure.Scenes;
+using System.Collections.Generic;
 
 namespace UnlockAdventure.Core
 {
     public class SceneManager
     {
-        private static SceneManager instance;
-        public static SceneManager Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new SceneManager();
-                return instance;
-            }
-        }
-
-        private IScene currentScene; // 필드로 선언
-        public IScene CurrentScene
-        {
-            get { return currentScene; }
-            private set { currentScene = value; }
-        }
-
-        private SceneType currentSceneType;
-
-        public SceneType CurrentSceneType 
-        {
-            get { return currentSceneType; }
-            private set { currentSceneType = value; }
-        }
-
         public enum SceneType
         {
             LanguageSelect,
             Intro,
-            Town,
-            FirstMap,
-            GameOver,
+            GameOver
         }
 
-        public void ChangeScene(SceneType newSceneType)
-        {
-            Console.Clear();  
-            currentSceneType = newSceneType;
-            currentScene?.Exit();
-            currentScene = CreateScene(newSceneType);
-            currentScene.Enter();
-        }
+        private SceneType currentSceneType;
+        public SceneType CurrentSceneType => currentSceneType;
 
-        private IScene CreateScene(SceneType sceneType)
+        private readonly Dictionary<SceneType, IScene> scenes;
+
+        public SceneManager()
         {
-            switch (sceneType)
+            scenes = new Dictionary<SceneType, IScene>
             {
-                case SceneType.LanguageSelect:
-                    return new LanguageSelectScene();
-                case SceneType.Intro:
-                    return new IntroScene();
-                case SceneType.GameOver:  
-                    return new GameOverScene();
-                default:
-                    Environment.Exit(0);
-                    throw new Exception("Invalid scene type");
-            }
+                [SceneType.LanguageSelect] = new LanguageSelectScene(),
+                [SceneType.Intro] = new IntroScene(),
+                [SceneType.GameOver] = new GameOverScene()
+            };
         }
 
-        public void Initialize()
+        public void ChangeScene(SceneType newScene)
         {
-            ChangeScene(SceneType.Intro);
+            Console.Clear();
+            currentSceneType = newScene;
+            scenes[currentSceneType].Render();
+        }
+
+        public void RefreshCurrentScene()
+        {
+            Console.Clear();
+            scenes[currentSceneType].Render();
         }
 
         public void Update()
         {
-            currentScene?.Update();
+            // 현재는 필요한 기능이 없지만,
+            // 씬 상태 업데이트가 필요할 경우를 위해 메서드는 유지
         }
     }
-
-    public interface IScene  
+    public interface IScene
     {
-        void Enter();
-        void Update();
-        void Exit();
+        void Render();
     }
 }

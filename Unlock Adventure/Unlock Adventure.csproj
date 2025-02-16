@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\AchieveSystem.cs" />
+    <Compile Include="Core\AchievementManager.cs" />
     <Compile Include="Core\GameManager.cs" />
-    <Compile Include="Core\InputSysystem.cs" />
-    <Compile Include="Core\LanguageSystem.cs" />
+    <Compile Include="Core\InputManager.cs" />
+    <Compile Include="Core\TextManager.cs" />
     <Compile Include="Core\SceneManager.cs" />
     <Compile Include="Data\GameData.cs" />
     <Compile Include="Scenes\GameOverScene.cs" />
