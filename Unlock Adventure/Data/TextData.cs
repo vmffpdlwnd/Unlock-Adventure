@@ -11,29 +11,34 @@ namespace UnlockAdventure.Data
         static TextData()
         {
             textData = new Dictionary<string, Dictionary<LanguageSystem.Language, string>>();
+            
+            var title = new Dictionary<LanguageSystem.Language, string>();
+            title.Add(LanguageSystem.Language.Korean, "Unlock Adventure");
+            title.Add(LanguageSystem.Language.English, "Unlock Adventure");
+            textData.Add("intro.title", title);
 
-            var introTitle = new Dictionary<LanguageSystem.Language, string>();
-            introTitle.Add(LanguageSystem.Language.Korean, "어둠 속에서 빛나는 화면...");
-            introTitle.Add(LanguageSystem.Language.English, "A screen shining in darkness...");
-            textData.Add("intro.title", introTitle);
+            var opening = new Dictionary<LanguageSystem.Language, string>();
+            opening.Add(LanguageSystem.Language.Korean, "어둠 속에서 빛나는 화면...");
+            opening.Add(LanguageSystem.Language.English, "A screen shining in darkness...");
+            textData.Add("intro.opening", opening);
 
-            var introStart = new Dictionary<LanguageSystem.Language, string>();
-            introStart.Add(LanguageSystem.Language.Korean, "새로운 시작이 당신을 기다립니다.");
-            introStart.Add(LanguageSystem.Language.English, "A new beginning awaits you.");
-            textData.Add("intro.start", introStart);
+            var start = new Dictionary<LanguageSystem.Language, string>();
+            start.Add(LanguageSystem.Language.Korean, "새로운 시작이 당신을 기다립니다.");
+            start.Add(LanguageSystem.Language.English, "A new beginning awaits you.");
+            textData.Add("intro.start", start);
 
-            var introPressKey = new Dictionary<LanguageSystem.Language, string>();
-            introPressKey.Add(LanguageSystem.Language.Korean, "아무 키를 입력해 주세요");
-            introPressKey.Add(LanguageSystem.Language.English, "Press any key to start");
-            textData.Add("intro.presskey", introPressKey);
+            var pressKey = new Dictionary<LanguageSystem.Language, string>();
+            pressKey.Add(LanguageSystem.Language.Korean, "아무 키나 눌러 시작하세요...");
+            pressKey.Add(LanguageSystem.Language.English, "Press any key to start...");
+            textData.Add("intro.presskey", pressKey);
         }
 
         public static string GetText(string key, LanguageSystem.Language language)
         {
             Dictionary<LanguageSystem.Language, string> translations;
             string text;
-
-            if (textData.TryGetValue(key, out translations) &&
+            
+            if (textData.TryGetValue(key, out translations) && 
                 translations.TryGetValue(language, out text))
             {
                 return text;

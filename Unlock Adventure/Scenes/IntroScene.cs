@@ -8,12 +8,12 @@ namespace UnlockAdventure.Scenes
         public void Enter()
         {
             Console.WriteLine(@"
- ================================
-    Unlock Adventure
- ================================
- 어둠 속에서 빛나는 화면...
- 새로운 시작이 당신을 기다립니다.
- 아무 키나 눌러 시작하세요...");
+================================");
+            Console.WriteLine("   " + LanguageSystem.Instance.GetText("intro.title"));
+            Console.WriteLine("================================");
+            Console.WriteLine(LanguageSystem.Instance.GetText("intro.opening"));
+            Console.WriteLine(LanguageSystem.Instance.GetText("intro.start"));
+            Console.WriteLine(LanguageSystem.Instance.GetText("\n"+"intro.presskey"));
         }
 
         public void Update()
