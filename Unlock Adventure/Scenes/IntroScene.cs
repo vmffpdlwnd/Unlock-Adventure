@@ -7,8 +7,7 @@ namespace UnlockAdventure.Scenes
     {
         public void Enter()
         {
-            Console.WriteLine(@"
-================================");
+            Console.WriteLine("================================");
             Console.WriteLine("   " + LanguageSystem.Instance.GetText("intro.title"));
             Console.WriteLine("================================");
             Console.WriteLine(LanguageSystem.Instance.GetText("intro.opening"));
