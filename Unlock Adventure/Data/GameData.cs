@@ -28,9 +28,10 @@ namespace UnlockAdventure.Data
         private static void InitAchieveData()
         {
             achieveData = new Dictionary<string, Dictionary<TextManager.Language, string>>();
+
             Add("achieve.unlocked", "업적 달성", "Achievement Unlocked", achieveData);
             Add("achieve.realend", "진짜... 끝?", "Really... The End?", achieveData);
-            Add("achieve.hint", "힌트: 모든 끝은 새로운 시작이 될 수 있습니다...", "Hint: Every end can be a new beginning...", achieveData);
+            Add("achieve.realend.hint", "힌트: 모든 끝은 새로운 시작이 될 수 있습니다...", "Hint: Every end can be a new beginning...", achieveData);
         }
 
         private static void Add(string key, string kr, string en, Dictionary<string, Dictionary<TextManager.Language, string>> target = null)
