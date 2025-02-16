@@ -11,15 +11,16 @@ namespace UnlockAdventure
             Console.Title = "Unlock Adventure";
             Console.CursorVisible = false;
 
-            // 각 매니저들 초기화
+            // 매니저 초기화
             var sceneManager = new SceneManager();
-            var inputSystem = new InputSystem(sceneManager);
-            var gameManager = new GameManager(sceneManager, inputSystem);
+            var inputManager = new InputManager(sceneManager);
+            var gameManager = new GameManager(sceneManager, inputManager);
 
             try
             {
-                // 게임 시작
+                // 시작 씬 설정
                 sceneManager.ChangeScene(SceneManager.SceneType.LanguageSelect);
+                // 게임 실행
                 gameManager.Run();
             }
             catch (Exception ex)
