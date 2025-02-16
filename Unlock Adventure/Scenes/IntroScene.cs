@@ -13,7 +13,7 @@ namespace UnlockAdventure.Scenes
             Console.WriteLine("================================");
             Console.WriteLine(LanguageSystem.Instance.GetText("intro.opening"));
             Console.WriteLine(LanguageSystem.Instance.GetText("intro.start"));
-            Console.WriteLine("\n" + LanguageSystem.Instance.GetText("intro.presskey"));
+            Console.WriteLine("\n" + LanguageSystem.Instance.GetText("presskey"));
         }
 
         public void Update()

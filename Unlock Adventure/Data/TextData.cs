@@ -31,6 +31,11 @@ namespace UnlockAdventure.Data
             pressKey.Add(LanguageSystem.Language.Korean, "아무 키나 눌러 시작하세요...");
             pressKey.Add(LanguageSystem.Language.English, "Press any key to start...");
             textData.Add("intro.presskey", pressKey);
+
+            var gameoverMessage = new Dictionary<LanguageSystem.Language, string>();
+            gameoverMessage.Add(LanguageSystem.Language.Korean, "플레이 해주셔서 감사합니다.");
+            gameoverMessage.Add(LanguageSystem.Language.English, "Thanks for playing.");
+            textData.Add("gameover.message", gameoverMessage);
         }
 
         public static string GetText(string key, LanguageSystem.Language language)

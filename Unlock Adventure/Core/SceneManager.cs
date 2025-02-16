@@ -16,7 +16,13 @@ namespace UnlockAdventure.Core
             }
         }
 
-        private IScene currentScene;
+        private IScene currentScene; // 필드로 선언
+        public IScene CurrentScene
+        {
+            get { return currentScene; }
+            private set { currentScene = value; }
+        }
+
         private SceneType currentSceneType;
 
         public SceneType CurrentSceneType 
@@ -31,6 +37,7 @@ namespace UnlockAdventure.Core
             Intro,
             Town,
             FirstMap,
+            GameOver,
         }
 
         public void ChangeScene(SceneType newSceneType)
@@ -50,6 +57,8 @@ namespace UnlockAdventure.Core
                     return new LanguageSelectScene();
                 case SceneType.Intro:
                     return new IntroScene();
+                case SceneType.GameOver:  
+                    return new GameOverScene();
                 default:
                     Environment.Exit(0);
                     throw new Exception("Invalid scene type");
