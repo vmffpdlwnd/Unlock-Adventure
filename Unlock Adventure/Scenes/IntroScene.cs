@@ -13,7 +13,7 @@ namespace UnlockAdventure.Scenes
             Console.WriteLine("================================");
             Console.WriteLine(LanguageSystem.Instance.GetText("intro.opening"));
             Console.WriteLine(LanguageSystem.Instance.GetText("intro.start"));
-            Console.WriteLine(LanguageSystem.Instance.GetText("\n"+"intro.presskey"));
+            Console.WriteLine("\n" + LanguageSystem.Instance.GetText("intro.presskey"));
         }
 
         public void Update()
@@ -23,7 +23,7 @@ namespace UnlockAdventure.Scenes
 
         public void Exit()
         {
-            Console.Clear();
+            // 씬 전환시 내용 지우기
         }
     }
 }

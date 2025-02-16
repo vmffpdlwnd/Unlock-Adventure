@@ -11,7 +11,7 @@ namespace UnlockAdventure.Data
         static TextData()
         {
             textData = new Dictionary<string, Dictionary<LanguageSystem.Language, string>>();
-            
+
             var title = new Dictionary<LanguageSystem.Language, string>();
             title.Add(LanguageSystem.Language.Korean, "Unlock Adventure");
             title.Add(LanguageSystem.Language.English, "Unlock Adventure");
