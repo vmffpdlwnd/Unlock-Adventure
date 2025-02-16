@@ -1,4 +1,5 @@
 ﻿using System;
+using UnlockAdventure.Scenes;
 namespace UnlockAdventure.Core
 {
     public class InputSystem
@@ -11,37 +12,22 @@ namespace UnlockAdventure.Core
 
         public void HandleInput()
         {
-            if (sceneManager.CurrentSceneType == SceneManager.SceneType.LanguageSelect)
+            if (Console.KeyAvailable)
             {
-                if (Console.KeyAvailable)
-                {
-                    var key = Console.ReadKey(true);
-                    HandleLanguageSelect(key.Key);
-                }
-            }
-            else if (sceneManager.CurrentSceneType == SceneManager.SceneType.Intro)
-            {
-                if (Console.KeyAvailable)
-                {
-                    Console.ReadKey(true);
-                    sceneManager.ChangeScene(SceneManager.SceneType.FirstMap);
-                }
-            }
-        }
+                var key = Console.ReadKey(true);
 
-        private void HandleLanguageSelect(ConsoleKey key)
-        {
-            switch (key)
-            {
-                case ConsoleKey.UpArrow:
-                    // 현재 선택된 언어 변경
-                    break;
-                case ConsoleKey.DownArrow:
-                    // 현재 선택된 언어 변경
-                    break;
-                case ConsoleKey.Enter:
-                    sceneManager.ChangeScene(SceneManager.SceneType.Intro);
-                    break;
+                if (sceneManager.CurrentSceneType == SceneManager.SceneType.LanguageSelect)
+                {
+                    LanguageSystem.Instance.MoveSelection(key.Key);
+                    sceneManager.ChangeScene(SceneManager.SceneType.LanguageSelect); // 화면 갱신
+
+                    if (key.Key == ConsoleKey.Enter)
+                        sceneManager.ChangeScene(SceneManager.SceneType.Intro);
+                }
+                else if (sceneManager.CurrentSceneType == SceneManager.SceneType.Intro)
+                {
+                    sceneManager.ChangeScene(SceneManager.SceneType.GameOver);  // FirstMap 대신 GameOver로 변경
+                }
             }
         }
     }

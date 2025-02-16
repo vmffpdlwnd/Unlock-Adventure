@@ -1,41 +1,56 @@
-﻿// Core/LanguageSystem.cs
-using System;
-using System.Collections.Generic;
+﻿using System;
 using UnlockAdventure.Data;
 
-namespace UnlockAdventure.Core
+public class LanguageSystem
 {
-    public class LanguageSystem
+    private static LanguageSystem instance;
+    public static LanguageSystem Instance
     {
-        private static LanguageSystem instance;
-        public static LanguageSystem Instance
+        get
         {
-            get
+            if (instance == null)
             {
-                if (instance == null)
-                {
-                    instance = new LanguageSystem();
-                }
-                return instance;
+                instance = new LanguageSystem();
             }
-        }
-
-        private Language currentLanguage = Language.Korean;
-
-        public enum Language
-        {
-            Korean,
-            English
-        }
-
-        public string GetText(string key)
-        {
-            return TextData.GetText(key, currentLanguage);
-        }
-
-        public void ChangeLanguage(Language language)
-        {
-            currentLanguage = language;
+            return instance;
         }
     }
+
+    private Language currentLanguage = Language.Korean;
+    private int selectedIndex = 0;
+    private readonly string[] languages = { "한국어", "English" };
+
+    public enum Language
+    {
+        Korean,
+        English
+    }
+
+    public string GetText(string key)
+    {
+        return TextData.GetText(key, currentLanguage);
+    }
+    public void ChangeLanguage(Language language)
+    {
+        currentLanguage = language;
+    }
+
+    public void MoveSelection(ConsoleKey key)
+    {
+        switch (key)
+        {
+            case ConsoleKey.UpArrow:
+                selectedIndex = Math.Max(0, selectedIndex - 1);
+                break;
+            case ConsoleKey.DownArrow:
+                selectedIndex = Math.Min(languages.Length - 1, selectedIndex + 1);
+                break;
+            case ConsoleKey.Enter:
+                ChangeLanguage(selectedIndex == 0 ? Language.Korean : Language.English);
+                break;
+        }
+    }
+
+    public string[] GetLanguages() => languages;
+    public int GetSelectedIndex() => selectedIndex;
 }
