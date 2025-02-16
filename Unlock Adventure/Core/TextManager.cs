@@ -46,6 +46,10 @@ public class TextManager
 
     public string GetText(string key)
     {
+        if (key.StartsWith("achieve."))
+        {
+            return GameData.GetAchieve(key, currentLanguage);
+        }
         return GameData.GetText(key, currentLanguage);
     }
 
