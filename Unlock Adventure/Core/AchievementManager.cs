@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System;
-using UnlockAdventure.Core;
 
 public class AchievementManager
 {
@@ -22,8 +22,18 @@ public class AchievementManager
         if (!achievements.Contains(key))
         {
             achievements.Add(key);
+
+            // 업적 출력 처리
+            Thread.Sleep(1500);  // 1.5초 대기
             Console.WriteLine($"\n[{TextManager.Instance.GetText("achieve.unlocked")}]");
             Console.WriteLine(TextManager.Instance.GetText($"achieve.{key}"));
+
+            // 힌트 출력
+            if (!string.IsNullOrEmpty(TextManager.Instance.GetText($"achieve.{key}.hint")))
+            {
+                Thread.Sleep(800);   // 0.8초 대기
+                Console.WriteLine(TextManager.Instance.GetText($"achieve.{key}.hint"));
+            }
         }
     }
 
