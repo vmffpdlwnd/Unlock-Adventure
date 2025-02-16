@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnlockAdventure.Scenes;
 
 namespace UnlockAdventure.Core
 {
@@ -9,6 +10,7 @@ namespace UnlockAdventure.Core
         {
             LanguageSelect,
             Intro,
+            Test,
             GameOver
         }
 
@@ -23,7 +25,8 @@ namespace UnlockAdventure.Core
             {
                 [SceneType.LanguageSelect] = new LanguageSelectScene(),
                 [SceneType.Intro] = new IntroScene(),
-                [SceneType.GameOver] = new GameOverScene()
+                [SceneType.GameOver] = new GameOverScene(),
+                [SceneType.Test] = new TestScene()
             };
         }
 
