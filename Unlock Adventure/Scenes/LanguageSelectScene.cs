@@ -5,8 +5,7 @@ public class LanguageSelectScene : IScene
 {
     public void Enter()
     {
-        Console.Clear();
-        Console.WriteLine("\n\n   Select Language / 언어 선택\n");
+        Console.WriteLine("\n   Select Language / 언어 선택\n");
 
         string[] languages = LanguageSystem.Instance.GetLanguages();
         int selectedIndex = LanguageSystem.Instance.GetSelectedIndex();
